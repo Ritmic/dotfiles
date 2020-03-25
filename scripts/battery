@@ -1,0 +1,27 @@
+#!/bin/bash
+perc=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage |awk '{print $2}')
+tte=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "time to empty | awk '{print $2}'")
+state=$(upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep state | awk '{print $2}')
+color=%{F#0F0}
+underline=%{u#f90}%{+u}
+
+if [ "$state" == "charging" ]; then
+    underline=%{u#f90}%{+u}
+elif [ "$state" == "discharging" ]; then
+    underline=%{u#f00}%{+u}
+else
+    underline=%{u#0f0}%{+u}
+fi
+
+if [ "${perc//%}" -gt 98 ]; then
+    perc="100%"
+    color=%{F#0f0}
+elif [ "${perc//%}" -gt 40 ]; then
+    color=%{F#fff}
+elif [ "${perc//%}" -gt 15 ]; then
+    color=%{F#f90}
+else
+    color=%{F#f00}
+fi
+
+echo $color$underline$perc

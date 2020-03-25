@@ -12,6 +12,7 @@ bar : polybar
 - Music (maybe)
 - Email 
 - Code editor (vs code:default/vim:if i'm crazy enough) 
+- Terminal (st/urxvt/terminator)
 
 ## i3 
 - Create color scheme
@@ -20,7 +21,7 @@ bar : polybar
 - Wifi/Ethernet
 - Bluetooth
 - Email (Need email CLI client) for personal, work, and uni
-- Disk space 
+- Disk space
 - Date
 - Workspaces
 
